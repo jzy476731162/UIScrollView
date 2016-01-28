@@ -1,6 +1,6 @@
 //
 //  ShufflingFigure.m
-//  
+//
 //
 //  Created by Ji on 15/9/1.
 //
@@ -92,7 +92,7 @@
     }else if([imageList count] > 1){
         [self setEnableScroll:YES];
         [[self scrollView] setScrollEnabled:YES];
-        if (time > 0) {
+        if (self.time > 0) {
             [self setTimer:[NSTimer scheduledTimerWithTimeInterval:self.time target:self selector:@selector(timerdoWhat) userInfo:nil repeats:YES]];
         }
     }
@@ -143,7 +143,7 @@
     UILabel *labell = [[UILabel alloc] initWithFrame:CGRectMake(index * [self width] + 15, [self height] - frame.size.height - 15, [self width] - 15 * 2, frame.size.height)];
     [labell setText:title];
     [labell setTextAlignment:NSTextAlignmentCenter];
-
+    
     [labell setNumberOfLines:0];
     [labell setFont:[UIFont boldSystemFontOfSize:16]];
     [labell setTextColor:[UIColor whiteColor]];
@@ -157,20 +157,16 @@
 - (void)setPictureWithDataList:(NSArray *)datalist Time:(NSInteger)time delegate:(id)delegate_{
     delegate = delegate_;
     
-//    NSMutableArray *urlList = [[NSMutableArray alloc] init];
-//    NSMutableArray *titleList = [[NSMutableArray alloc] init];
-//    for (NSDictionary *imgDic in datalist) {
-//        if ([imgDic objectForKey:@"image_url"]) {
-//            [urlList addObject:[imgDic objectForKey:@"image_url"]];
-//        }
-//        if ([imgDic objectForKey:@"title"]) {
-//            [titleList addObject:[imgDic objectForKey:@"title"]];
-//        }
-//    }
-
-    if (time < 3) {
-        time = 3;
-    }
+    //    NSMutableArray *urlList = [[NSMutableArray alloc] init];
+    //    NSMutableArray *titleList = [[NSMutableArray alloc] init];
+    //    for (NSDictionary *imgDic in datalist) {
+    //        if ([imgDic objectForKey:@"image_url"]) {
+    //            [urlList addObject:[imgDic objectForKey:@"image_url"]];
+    //        }
+    //        if ([imgDic objectForKey:@"title"]) {
+    //            [titleList addObject:[imgDic objectForKey:@"title"]];
+    //        }
+    //    }
     
     [self setTime:time];
     [self addPicture:datalist labelList:nil];
@@ -191,7 +187,9 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if ([self enableScroll]) {
-        [self setTimer:[NSTimer scheduledTimerWithTimeInterval:self.time target:self selector:@selector(timerdoWhat) userInfo:nil repeats:YES]];
+        if (self.time) {
+            [self setTimer:[NSTimer scheduledTimerWithTimeInterval:self.time target:self selector:@selector(timerdoWhat) userInfo:nil repeats:YES]];
+        }
     }
 }
 

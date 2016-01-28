@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CMCarouselFigure *figure = [[CMCarouselFigure alloc] initWithFrame:CGRectMake(0, 0, MY_DEVICE_WIDTH, 200)];
-    [figure setPictureWithDataList:@[@"http://pic14.nipic.com/20110522/7411759_164157418126_2.jpg",@"http://pic.nipic.com/2007-11-09/200711912453162_2.jpg",@"http://pic2.ooopic.com/01/03/51/25b1OOOPIC19.jpg"] Time:4 delegate:self];
+    [figure setPictureWithDataList:@[@"http://pic14.nipic.com/20110522/7411759_164157418126_2.jpg",@"http://pic.nipic.com/2007-11-09/200711912453162_2.jpg",@"http://pic2.ooopic.com/01/03/51/25b1OOOPIC19.jpg"] delegate:self];
     [self.view addSubview:figure];
     // Do any additional setup after loading the view, typically from a nib.
 }
